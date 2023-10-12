@@ -1,0 +1,40 @@
+<%- include("partials/header")%>
+
+<link rel="stylesheet" href="/stylesheets/show.css">
+
+
+<%- include("partials/nav")%>
+
+
+<!-- <%= JSON.stringify(books)%> -->
+
+<div class="show-container">
+    <% if (books.length===0){ %>
+
+        <h2 style="color: tomato; text-align: center;">No Book Registered</h2>
+    <% } %>
+
+    <% books.forEach(function(book,idx){ %>
+       <div class="cards">
+
+        <img src="<%= book.image%>" alt="">
+
+        <h3><%= book.title%></h3>
+
+        <p><%= book.author%></p>
+
+        <a target="_blank" href="<%= book.link%>">Explore</a>
+
+        <p>
+            <a href="/delete/<%= idx%>">Delete</a>
+
+            <a href="/update/<%= idx%>">Update</a>
+        </p>
+
+       </div>
+    <% }) %>
+
+</div>
+
+
+<%- include("partials/footer")%>
